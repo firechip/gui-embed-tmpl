@@ -8,19 +8,24 @@
   ******************************************************************************
 */
 
-
 #include "lvgl.h"
 #include "app_hal.h"
 
-#include "demo.h"
+#include "gui_guider.h"
+#include "events_init.h"
+#include "custom.h"
+
+lv_ui guider_ui;
 
 int main(void)
 {
-	lv_init();
+  lv_init();
 
-	hal_setup();
+  hal_setup();
 
-	demo_create();
+  setup_ui(&guider_ui);
+  events_init(&guider_ui);
+  custom_init(&guider_ui);
 
-	hal_loop();
+  hal_loop();
 }
